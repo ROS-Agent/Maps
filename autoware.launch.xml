@@ -4,6 +4,7 @@
   <arg name="map_path" description="point cloud and lanelet2 map directory path"/>
   <arg name="vehicle_model" description="vehicle model name"/>
   <arg name="sensor_model" description="sensor model name"/>
+  <!-- <arg name="use_pointcloud_container" default="true" description="launch pointcloud container"/> -->
   <arg name="use_pointcloud_container" default="true" description="launch pointcloud container"/>
   <arg name="pointcloud_container_name" default="pointcloud_container"/>
 
@@ -12,10 +13,13 @@
   <arg name="launch_carla_interface" default="true" description="convert carla sensor data to autoware suitable format"/>
   <arg name="launch_vehicle" default="true" description="launch vehicle"/>
   <arg name="launch_system" default="true" description="launch system"/>
+  <!-- <arg name="launch_map" default="true" description="launch map"/> -->
   <arg name="launch_map" default="true" description="launch map"/>
-  <arg name="launch_sensing" default="true" description="launch sensing"/>
+  <!-- <arg name="launch_sensing" default="true" description="launch sensing"/> -->
+  <arg name="launch_sensing" default="false" description="launch sensing"/>
   <arg name="launch_sensing_driver" default="false" description="launch sensing driver"/>
-  <arg name="launch_localization" default="true" description="launch localization"/>
+  <!-- <arg name="launch_localization" default="true" description="launch localization"/> -->
+  <arg name="launch_localization" default="false" description="launch localization"/>
   <arg name="launch_perception" default="true" description="launch perception"/>
   <arg name="launch_planning" default="true" description="launch planning"/>
   <arg name="launch_control" default="true" description="launch control"/>
@@ -50,7 +54,7 @@
   </group>
 
   <!-- CARLA -->
-    <group if="$(var launch_carla_interface)">
+  <group if="$(var launch_carla_interface)">
 		<node pkg="carla_pointcloud" exec="carla_pointcloud_node" name="carla_pointcloud_interface" output="screen"/>
 	</group>
 
